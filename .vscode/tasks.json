@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build and run single file",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++20",
+        "-O2",
+        "-pipe",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Run with input",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "\"${fileDirname}/${fileBasenameNoExtension} < ${fileDirname}/input.txt\""],
+      "presentation": {"panel":"new"}
+    },
+    {
+      "label": "Make build",
+      "type": "shell",
+      "command": "make",
+      "args": [],
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run last binary",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
